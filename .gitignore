@@ -1,0 +1,25 @@
+# Environment Variables & Secrets
+.env
+.env.local
+*.env
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+*.db
+*.sqlite3
+
+# Node & Frontend
+node_modules/
+dist/
+build/
+.DS_Store
+
+# IDE & System
+.vscode/
+.idea/
+*.log

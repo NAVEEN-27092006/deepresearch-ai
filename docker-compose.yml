@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: deepresearch-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - DEBUG=False
+      - SECRET_KEY=deepresearch_prod_secret_key_change_me_32chars
+      - DATABASE_URL=sqlite:///./deepresearch.db
+      - DEFAULT_AI_PROVIDER=fallback
+      - DEFAULT_SEARCH_PROVIDER=duckduckgo
+    volumes:
+      - ./backend/deepresearch.db:/app/deepresearch.db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    container_name: deepresearch-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
