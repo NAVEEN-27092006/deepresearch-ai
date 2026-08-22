@@ -1,17 +1,23 @@
 import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.core.config import settings
 from app.database.session import Base, engine
 from app.api import auth, research, report, followup, dashboard, user
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("deepresearch")
 
+
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
+
+# Create FastAPI application
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
@@ -21,18 +27,20 @@ app = FastAPI(
     redoc_url="/api/redoc"
 )
 
-# CORS Configuration
-origins = settings.CORS_ORIGINS
-if isinstance(origins, str):
-    origins = [origins]
 
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"] if "*" in origins else origins,
+    allow_origins=[
+        "https://deepresearchai.netlify.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Register Routers
 app.include_router(auth.router, prefix=settings.API_V1_STR)
@@ -41,6 +49,7 @@ app.include_router(report.router, prefix=settings.API_V1_STR)
 app.include_router(followup.router, prefix=settings.API_V1_STR)
 app.include_router(dashboard.router, prefix=settings.API_V1_STR)
 app.include_router(user.router, prefix=settings.API_V1_STR)
+
 
 @app.get("/")
 def root():
@@ -51,6 +60,13 @@ def root():
         "docs": "/api/docs"
     }
 
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True
+    )
