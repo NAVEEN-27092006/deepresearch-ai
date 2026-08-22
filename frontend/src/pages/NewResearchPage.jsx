@@ -137,7 +137,7 @@ export const NewResearchPage = () => {
                     padding: '1.25rem 1rem',
                     borderRadius: 'var(--radius-md)',
                     border: depth === item.id ? '2px solid var(--accent-primary)' : '1px solid var(--border-color)',
-                    background: depth === item.id ? 'rgba(139, 92, 246, 0.12)' : 'rgba(15, 23, 42, 0.4)',
+                    background: depth === item.id ? 'rgba(240, 68, 68, 0.12)' : 'var(--surface-soft)',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease'
                   }}

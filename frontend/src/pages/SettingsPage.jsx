@@ -220,7 +220,7 @@ export const SettingsPage = () => {
       </div>
 
       {/* AI Provider & System Info */}
-      <div className="glass-card" style={{ background: 'rgba(139, 92, 246, 0.06)' }}>
+      <div className="glass-card" style={{ background: 'rgba(240, 68, 68, 0.06)' }}>
         <h2 style={{ fontSize: '1.25rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <Cpu size={20} color="var(--accent-primary)" /> AI & Search Abstraction Layer
         </h2>

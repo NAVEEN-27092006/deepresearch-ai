@@ -177,7 +177,7 @@ export const ProgressPage = () => {
                   background: isDone 
                     ? 'rgba(16, 185, 129, 0.08)' 
                     : isCurrent 
-                    ? 'rgba(139, 92, 246, 0.12)' 
+                    ? 'rgba(240, 68, 68, 0.12)'
                     : 'rgba(15, 23, 42, 0.3)',
                   border: isCurrent 
                     ? '1px solid var(--accent-primary)' 
@@ -194,7 +194,7 @@ export const ProgressPage = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: isDone ? 'rgba(16, 185, 129, 0.2)' : isCurrent ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                    background: isDone ? 'rgba(98, 196, 156, 0.2)' : isCurrent ? 'rgba(240, 68, 68, 0.2)' : 'var(--surface-soft)',
                   color: isDone ? 'var(--accent-emerald)' : isCurrent ? 'var(--accent-primary)' : 'var(--text-muted)'
                 }}>
                   {isDone ? (

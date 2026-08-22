@@ -103,7 +103,7 @@ export const LandingPage = () => {
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                background: 'rgba(139, 92, 246, 0.15)',
+                background: 'rgba(240, 68, 68, 0.13)',
                 color: 'var(--accent-primary)',
                 display: 'flex',
                 alignItems: 'center',
@@ -164,8 +164,8 @@ export const LandingPage = () => {
         width: '100%',
         textAlign: 'center',
         padding: '4rem 2rem',
-        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%)',
-        borderColor: 'rgba(139, 92, 246, 0.3)'
+        background: 'linear-gradient(135deg, rgba(240, 68, 68, 0.16) 0%, rgba(240, 139, 98, 0.12) 100%)',
+        borderColor: 'rgba(240, 68, 68, 0.32)'
       }}>
         <h2 style={{ fontSize: '2.25rem', fontWeight: '800', marginBottom: '1rem' }}>Ready to Conduct Deep AI Research?</h2>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 2rem' }}>

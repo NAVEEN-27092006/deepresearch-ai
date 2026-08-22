@@ -165,8 +165,8 @@ export const ReportPage = () => {
         {/* Executive Summary Callout */}
         {report.executive_summary && (
           <div style={{
-            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
-            border: '1px solid rgba(139, 92, 246, 0.25)',
+            background: 'linear-gradient(135deg, rgba(240, 68, 68, 0.1) 0%, rgba(240, 139, 98, 0.1) 100%)',
+            border: '1px solid rgba(240, 68, 68, 0.25)',
             borderRadius: 'var(--radius-md)',
             padding: '1.5rem',
             marginBottom: '2rem'
@@ -284,8 +284,8 @@ export const ReportPage = () => {
                 {/* User Q */}
                 <div style={{
                   alignSelf: 'flex-end',
-                  background: 'rgba(139, 92, 246, 0.18)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'rgba(240, 68, 68, 0.14)',
+                  border: '1px solid rgba(240, 68, 68, 0.3)',
                   padding: '0.85rem 1.25rem',
                   borderRadius: '16px 16px 4px 16px',
                   maxWidth: '85%',

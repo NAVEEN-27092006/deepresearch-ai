@@ -102,7 +102,7 @@ export const DashboardPage = () => {
             width: '48px',
             height: '48px',
             borderRadius: '12px',
-            background: 'rgba(139, 92, 246, 0.15)',
+            background: 'rgba(240, 68, 68, 0.14)',
             color: 'var(--accent-primary)',
             display: 'flex',
             alignItems: 'center',

@@ -107,7 +107,7 @@ export const Navbar = () => {
             title="Toggle theme"
             style={{ padding: '0.4rem', borderRadius: '50%' }}
           >
-            {theme === 'dark' ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#8b5cf6" />}
+            {theme === 'dark' ? <Sun size={18} color="var(--accent-amber)" /> : <Moon size={18} color="var(--accent-primary)" />}
           </button>
 
           {/* User Profile Dropdown / Logout */}
@@ -118,7 +118,7 @@ export const Navbar = () => {
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: 'rgba(139, 92, 246, 0.2)',
+                  background: 'rgba(240, 68, 68, 0.16)',
                   color: 'var(--accent-primary)',
                   display: 'flex',
                   alignItems: 'center',
