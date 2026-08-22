@@ -13,8 +13,34 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("deepresearch")
 
 
+from sqlalchemy import text
+
 # Create database tables
 Base.metadata.create_all(bind=engine)
+
+def _apply_sqlite_migrations():
+    """Ensure new columns exist in SQLite database without losing existing data."""
+    with engine.connect() as conn:
+        columns_researches = [row[1] for row in conn.execute(text("PRAGMA table_info(researches);")).fetchall()]
+        if "normalized_topic" not in columns_researches:
+            conn.execute(text("ALTER TABLE researches ADD COLUMN normalized_topic TEXT;"))
+        if "quality_status" not in columns_researches:
+            conn.execute(text("ALTER TABLE researches ADD COLUMN quality_status VARCHAR(100) DEFAULT 'passed';"))
+
+        columns_sources = [row[1] for row in conn.execute(text("PRAGMA table_info(sources);")).fetchall()]
+        if "author" not in columns_sources:
+            conn.execute(text("ALTER TABLE sources ADD COLUMN author VARCHAR(255);"))
+        if "extracted_evidence" not in columns_sources:
+            conn.execute(text("ALTER TABLE sources ADD COLUMN extracted_evidence TEXT;"))
+        if "relevance_score" not in columns_sources:
+            conn.execute(text("ALTER TABLE sources ADD COLUMN relevance_score FLOAT DEFAULT 0.8;"))
+        conn.commit()
+
+try:
+    _apply_sqlite_migrations()
+except Exception as err:
+    logger.warning(f"DB Migration check info: {err}")
+
 
 
 # Create FastAPI application

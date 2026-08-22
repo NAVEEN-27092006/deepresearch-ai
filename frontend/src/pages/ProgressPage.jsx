@@ -73,14 +73,15 @@ export const ProgressPage = () => {
     };
   }, [id, navigate]);
 
-  // Steps checklist calculation based on progress percentage
+  // Steps checklist calculation based on progress percentage matching backend 7-stage pipeline
   const steps = [
-    { title: 'Understanding your research question & key intent', minProgress: 15, icon: BrainCircuit },
-    { title: 'Creating structured research plan & subtopics', minProgress: 30, icon: Cpu },
-    { title: 'Searching verified academic, govt & news sources', minProgress: 50, icon: Search },
-    { title: 'Collecting source metadata & evaluating authority', minProgress: 65, icon: ShieldCheck },
-    { title: 'Analyzing findings & synthesizing empirical evidence', minProgress: 80, icon: Sparkles },
-    { title: 'Generating structured Markdown report with inline citations', minProgress: 95, icon: FileText }
+    { title: '1. Understanding research question', minProgress: 14, icon: BrainCircuit },
+    { title: '2. Searching reliable sources', minProgress: 28, icon: Search },
+    { title: '3. Filtering relevant sources', minProgress: 42, icon: ShieldCheck },
+    { title: '4. Extracting evidence', minProgress: 57, icon: Cpu },
+    { title: '5. Analyzing findings', minProgress: 71, icon: Sparkles },
+    { title: '6. Generating citation-grounded report', minProgress: 85, icon: FileText },
+    { title: '7. Validating report quality', minProgress: 100, icon: CheckCircle2 }
   ];
 
   return (

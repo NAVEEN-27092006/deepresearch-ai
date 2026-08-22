@@ -52,9 +52,12 @@ class SourceResponse(BaseModel):
     url: str
     source_name: Optional[str] = None
     source_type: Optional[str] = "web"
+    author: Optional[str] = None
     publication_date: Optional[str] = None
     snippet: Optional[str] = None
+    extracted_evidence: Optional[str] = None
     quality_score: Optional[float] = 0.8
+    relevance_score: Optional[float] = 0.8
     quality_metadata: Optional[str] = None
 
     class Config:
@@ -88,12 +91,14 @@ class ResearchResponse(BaseModel):
     id: int
     user_id: int
     topic: str
+    normalized_topic: Optional[str] = None
     additional_instructions: Optional[str] = None
     depth: str
     source_preference: str
     status: str
     progress_percentage: int
     current_step: str
+    quality_status: Optional[str] = "passed"
     created_at: datetime
     completed_at: Optional[datetime] = None
     source_count: Optional[int] = 0

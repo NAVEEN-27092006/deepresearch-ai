@@ -236,16 +236,27 @@ export const ReportPage = () => {
                     <h4 style={{ fontSize: '1.05rem', fontWeight: '700' }}>
                       [{idx+1}] {src.title}
                     </h4>
-                    <span className="badge badge-completed">
-                      Quality: {intVal(src.quality_score)}/100
-                    </span>
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      {src.relevance_score && (
+                        <span className="badge badge-depth">
+                          Relevance: {intVal(src.relevance_score)}%
+                        </span>
+                      )}
+                      <span className="badge badge-completed">
+                        Quality: {intVal(src.quality_score)}/100
+                      </span>
+                    </div>
                   </div>
 
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: '0.4rem 0' }}>
-                    Domain: <strong style={{ color: 'var(--text-secondary)' }}>{src.source_name}</strong> • Type: <strong style={{ color: 'var(--accent-primary)' }}>{src.source_type}</strong> • Published: {src.publication_date || '2026'}
+                    Domain: <strong style={{ color: 'var(--text-secondary)' }}>{src.source_name}</strong> • Author: <strong style={{ color: 'var(--text-primary)' }}>{src.author || src.source_name}</strong> • Type: <strong style={{ color: 'var(--accent-primary)' }}>{src.source_type}</strong> • Published: {src.publication_date || 'Recent'}
                   </div>
 
-                  {src.snippet && (
+                  {src.extracted_evidence ? (
+                    <div style={{ fontSize: '0.9rem', color: 'var(--text-primary)', background: 'rgba(240, 68, 68, 0.08)', border: '1px solid rgba(240, 68, 68, 0.2)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', margin: '0.75rem 0' }}>
+                      <strong>Extracted Evidence:</strong> "{src.extracted_evidence}"
+                    </div>
+                  ) : src.snippet && (
                     <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', background: 'rgba(15, 23, 42, 0.4)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', margin: '0.75rem 0' }}>
                       "{src.snippet}"
                     </p>

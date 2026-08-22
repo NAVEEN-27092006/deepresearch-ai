@@ -23,12 +23,14 @@ class Research(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     topic = Column(Text, nullable=False)
+    normalized_topic = Column(Text, nullable=True)
     additional_instructions = Column(Text, nullable=True)
     depth = Column(String(50), default="standard")  # quick, standard, deep
     source_preference = Column(String(100), default="all")  # all, academic, government, official, news
-    status = Column(String(50), default="pending")  # pending, analyzing, planning, searching, synthesizing, completed, failed
+    status = Column(String(50), default="pending")  # pending, analyzing, searching, filtering, extracting, synthesizing, completed, failed
     progress_percentage = Column(Integer, default=0)
     current_step = Column(String(255), default="Initialized")
+    quality_status = Column(String(100), nullable=True, default="passed")
     created_at = Column(DateTime(timezone=True), default=utc_now)
     completed_at = Column(DateTime(timezone=True), nullable=True)
 
@@ -57,9 +59,12 @@ class Source(Base):
     url = Column(Text, nullable=False)
     source_name = Column(String(255), nullable=True)
     source_type = Column(String(100), default="web")  # academic, government, official, news, web
+    author = Column(String(255), nullable=True)
     publication_date = Column(String(100), nullable=True)
     snippet = Column(Text, nullable=True)
+    extracted_evidence = Column(Text, nullable=True)
     quality_score = Column(Float, default=0.8)
+    relevance_score = Column(Float, default=0.8)
     quality_metadata = Column(Text, nullable=True)  # JSON string with evaluation details
 
     research = relationship("Research", back_populates="sources")
